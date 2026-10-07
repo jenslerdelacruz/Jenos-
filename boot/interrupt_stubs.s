@@ -58,7 +58,7 @@ ISR_NOERRCODE 25
 ISR_NOERRCODE 26
 ISR_NOERRCODE 27
 ISR_NOERRCODE 28
-ISR_NOERRCODE 29
+ISR_ERRCODE   29
 ISR_ERRCODE   30
 ISR_NOERRCODE 31
 
@@ -85,6 +85,7 @@ IRQ 47, 15
 isr_common_stub:
     pusha                    # Pushes edi,esi,ebp,esp,ebx,edx,ecx,eax
     mov %ds, %ax             # Lower 16-bits of eax = ds.
+    movzx %ax, %eax
     push %eax                # save the data segment descriptor
 
     mov $0x10, %ax           # load the kernel data segment descriptor
@@ -93,7 +94,10 @@ isr_common_stub:
     mov %ax, %fs
     mov %ax, %gs
 
+    cld
+    push %esp                # pass the interrupt frame by pointer
     call isr_handler
+    add $4, %esp
 
     pop %ebx                 # reload the original data segment descriptor
     mov %bx, %ds
@@ -103,12 +107,12 @@ isr_common_stub:
 
     popa                     # Pops edi,esi,ebp...
     add $8, %esp             # Cleans up the pushed error code and pushed ISR number
-    sti
     iret                     # pops 5 things at once: CS, EIP, EFLAGS, SS, and ESP
 
 irq_common_stub:
     pusha
     mov %ds, %ax
+    movzx %ax, %eax
     push %eax
 
     mov $0x10, %ax
@@ -117,7 +121,10 @@ irq_common_stub:
     mov %ax, %fs
     mov %ax, %gs
 
+    cld
+    push %esp                # pass the interrupt frame by pointer
     call irq_handler
+    add $4, %esp
 
     pop %ebx
     mov %bx, %ds
@@ -127,7 +134,6 @@ irq_common_stub:
 
     popa
     add $8, %esp
-    sti
     iret
 
 .global idt_flush
