@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+     JenOS XAML (JXAML) - Login Screen Definition
+     Premium desktop login experience with Fluent Design
+-->
+<Window 
+    xmlns="http://jenos.org/xaml/2024"
+    xmlns:ui="JenUI"
+    Width="1280"
+    Height="720"
+    Background="#1A1A1F"
+    Name="LoginWindow">
+
+    <!-- Main container with gradient background -->
+    <Grid Name="MainContainer" ColumnCount="1" RowCount="1">
+        
+        <!-- Animated gradient background -->
+        <GradientPanel 
+            Name="BackgroundGradient"
+            StartColor="#1A1A1F"
+            EndColor="#1F2530"
+            Orientation="Vertical"
+            Opacity="1.0"
+            Column="0"
+            Row="0" />
+
+        <!-- System Tray (Top bar) -->
+        <StackPanel 
+            Name="SystemTray"
+            Orientation="Horizontal"
+            Height="60"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Top"
+            Padding="40,20,40,0">
+            
+            <!-- Clock display -->
+            <Clock 
+                Name="SystemClock"
+                FontSize="16"
+                Foreground="#FFFFFF"
+                Width="120"
+                Height="30" />
+
+            <!-- Spacer -->
+            <Spacer Width="*" />
+
+            <!-- System icons -->
+            <StackPanel Orientation="Horizontal" Spacing="20">
+                <IconButton 
+                    Name="NetworkButton"
+                    Icon="network"
+                    Size="40"
+                    Tooltip="Network settings" />
+                
+                <IconButton 
+                    Name="SettingsButton"
+                    Icon="settings"
+                    Size="40"
+                    Tooltip="Settings" />
+                
+                <IconButton 
+                    Name="PowerButton"
+                    Icon="power"
+                    Size="40"
+                    Tooltip="Power menu" />
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Centered login panel -->
+        <Panel 
+            Name="LoginPanel"
+            Width="450"
+            Height="520"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="#202124"
+            CornerRadius="16"
+            HasShadow="True"
+            ShadowDepth="8"
+            UseAcrylicEffect="True"
+            AcrylicOpacity="200">
+
+            <!-- Accent line at top -->
+            <Rectangle 
+                Name="AccentLine"
+                Height="3"
+                Width="*"
+                Fill="#50B4F2"
+                Margin="20,0,20,0" />
+
+            <!-- Inner content -->
+            <StackPanel 
+                Name="LoginContent"
+                Orientation="Vertical"
+                Spacing="24"
+                Padding="30,25,30,30"
+                HorizontalAlignment="Stretch">
+
+                <!-- User avatar -->
+                <Grid HorizontalAlignment="Center" Width="120" Height="120">
+                    <AvatarCircle 
+                        Name="UserAvatar"
+                        Diameter="120"
+                        BorderColor="#0078D4"
+                        BorderWidth="3" />
+                </Grid>
+
+                <!-- Welcome message -->
+                <StackPanel Orientation="Vertical" Spacing="8" HorizontalAlignment="Center">
+                    <Label 
+                        Name="WelcomeLabel"
+                        Text="Welcome back"
+                        FontSize="24"
+                        FontWeight="Semibold"
+                        Foreground="#FFFFFF"
+                        HorizontalAlignment="Center" />
+                    
+                    <Label 
+                        Name="SubtitleLabel"
+                        Text="Sign in to JenOS"
+                        FontSize="14"
+                        Foreground="#B3B3B3"
+                        HorizontalAlignment="Center" />
+                </StackPanel>
+
+                <!-- Username field -->
+                <StackPanel Orientation="Vertical" Spacing="8">
+                    <Label 
+                        Name="UsernameLabel"
+                        Text="Username"
+                        FontSize="12"
+                        Foreground="#0078D4"
+                        FontWeight="Medium" />
+                    
+                    <TextBox 
+                        Name="UsernameInput"
+                        Placeholder="Enter username"
+                        Height="48"
+                        Padding="12,0,12,0"
+                        BorderRadius="8"
+                        Background="#2F3033"
+                        BorderBrush="#313244"
+                        BorderThickness="1"
+                        Foreground="#FFFFFF"
+                        PlaceholderForeground="#808080"
+                        FocusedBorderBrush="#0078D4" />
+                </StackPanel>
+
+                <!-- Password field -->
+                <StackPanel Orientation="Vertical" Spacing="8">
+                    <Label 
+                        Name="PasswordLabel"
+                        Text="Password"
+                        FontSize="12"
+                        Foreground="#0078D4"
+                        FontWeight="Medium" />
+                    
+                    <PasswordBox 
+                        Name="PasswordInput"
+                        Placeholder="Enter password"
+                        Height="48"
+                        Padding="12,0,12,0"
+                        BorderRadius="8"
+                        Background="#2F3033"
+                        BorderBrush="#313244"
+                        BorderThickness="1"
+                        Foreground="#FFFFFF"
+                        PlaceholderForeground="#808080"
+                        FocusedBorderBrush="#0078D4"
+                        ShowPasswordToggle="True" />
+                </StackPanel>
+
+                <!-- Sign In button -->
+                <Button 
+                    Name="SignInButton"
+                    Content="Sign In"
+                    Height="52"
+                    Background="#0078D4"
+                    Foreground="#FFFFFF"
+                    BorderRadius="10"
+                    FontSize="14"
+                    FontWeight="Semibold"
+                    HorizontalAlignment="Stretch"
+                    Click="OnSignInClicked"
+                    HoverBackground="#50B4F2"
+                    PressedBackground="#004A90" />
+
+                <!-- Divider -->
+                <Rectangle 
+                    Name="DividerLine"
+                    Height="1"
+                    Fill="#313244"
+                    Margin="0,8,0,8" />
+
+                <!-- Secondary options -->
+                <Label 
+                    Name="OrLabel"
+                    Text="or continue with"
+                    FontSize="12"
+                    Foreground="#585B70"
+                    HorizontalAlignment="Center" />
+
+                <!-- Secondary buttons -->
+                <Grid ColumnCount="2" ColumnSpacing="10" HorizontalAlignment="Stretch">
+                    <Button 
+                        Name="GuestButton"
+                        Content="Guest"
+                        Height="44"
+                        Background="#3B3D41"
+                        Foreground="#FFFFFF"
+                        BorderRadius="8"
+                        FontSize="12"
+                        Click="OnGuestClicked"
+                        Column="0"
+                        HoverBackground="#45475A" />
+                    
+                    <Button 
+                        Name="CreateUserButton"
+                        Content="Create User"
+                        Height="44"
+                        Background="#3B3D41"
+                        Foreground="#FFFFFF"
+                        BorderRadius="8"
+                        FontSize="12"
+                        Click="OnCreateUserClicked"
+                        Column="1"
+                        HoverBackground="#45475A" />
+                </Grid>
+
+            </StackPanel>
+
+        </Panel>
+
+        <!-- Footer text -->
+        <Label 
+            Name="FooterLabel"
+            Text="Powered by JenOS"
+            FontSize="11"
+            Foreground="#808080"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="0,0,0,30" />
+
+    </Grid>
+
+    <!-- Event handlers bound to LoginView -->
+    <EventHandlers>
+        <EventHandler Name="OnSignInClicked" Handler="LoginView.OnSignInClicked" />
+        <EventHandler Name="OnGuestClicked" Handler="LoginView.OnGuestClicked" />
+        <EventHandler Name="OnCreateUserClicked" Handler="LoginView.OnCreateUserClicked" />
+        <EventHandler Name="OnWindowLoaded" Handler="LoginView.OnWindowLoaded" />
+    </EventHandlers>
+
+</Window>

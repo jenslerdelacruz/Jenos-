@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+     JenOS Style Definitions (JSTYLE)
+     Centralized styling for login screen
+-->
+<Styles xmlns="http://jenos.org/xaml/2024">
+
+    <!-- Color definitions -->
+    <ColorResources>
+        <!-- Backgrounds -->
+        <Color Name="PrimaryBackground">#202124</Color>
+        <Color Name="SecondaryBackground">#2F3033</Color>
+        <Color Name="TertiaryBackground">#3B3D41</Color>
+        <Color Name="SurfaceBase">#1A1A1F</Color>
+        
+        <!-- Accents -->
+        <Color Name="AccentPrimary">#0078D4</Color>
+        <Color Name="AccentLight">#50B4F2</Color>
+        <Color Name="AccentDark">#004A90</Color>
+        
+        <!-- Text -->
+        <Color Name="TextPrimary">#FFFFFF</Color>
+        <Color Name="TextSecondary">#B3B3B3</Color>
+        <Color Name="TextTertiary">#808080</Color>
+        <Color Name="TextDisabled">#606060</Color>
+        
+        <!-- Borders -->
+        <Color Name="BorderLight">#464748</Color>
+        <Color Name="BorderDark">#2D2E30</Color>
+        <Color Name="Divider">#313244</Color>
+    </ColorResources>
+
+    <!-- Font definitions -->
+    <FontResources>
+        <Font Name="SegoeUIRegular" Family="Segoe UI" Weight="Regular" />
+        <Font Name="SegoeUISemibold" Family="Segoe UI" Weight="Semibold" />
+        <Font Name="SegoeUIBold" Family="Segoe UI" Weight="Bold" />
+    </FontResources>
+
+    <!-- Thickness/Spacing definitions -->
+    <ThicknessResources>
+        <Thickness Name="SmallSpacing">8</Thickness>
+        <Thickness Name="MediumSpacing">16</Thickness>
+        <Thickness Name="LargeSpacing">24</Thickness>
+        <Thickness Name="XLargeSpacing">32</Thickness>
+        
+        <Thickness Name="SmallPadding">4,2,4,2</Thickness>
+        <Thickness Name="MediumPadding">12,8,12,8</Thickness>
+        <Thickness Name="LargePadding">16,12,16,12</Thickness>
+        
+        <Thickness Name="StandardMargin">0,0,0,0</Thickness>
+    </ThicknessResources>
+
+    <!-- Corner radius definitions -->
+    <CornerRadiusResources>
+        <CornerRadius Name="SmallRadius">4</CornerRadius>
+        <CornerRadius Name="MediumRadius">8</CornerRadius>
+        <CornerRadius Name="LargeRadius">12</CornerRadius>
+        <CornerRadius Name="XLargeRadius">16</CornerRadius>
+    </CornerRadiusResources>
+
+    <!-- Button styles -->
+    <ControlStyle Name="PrimaryButton" ControlType="Button">
+        <Property Name="Background">$(AccentPrimary)</Property>
+        <Property Name="Foreground">$(TextPrimary)</Property>
+        <Property Name="BorderRadius">$(MediumRadius)</Property>
+        <Property Name="Padding">$(LargePadding)</Property>
+        <Property Name="FontWeight">Semibold</Property>
+        <Property Name="Height">52</Property>
+        <State Name="Normal">
+            <Property Name="Background">$(AccentPrimary)</Property>
+        </State>
+        <State Name="Hover">
+            <Property Name="Background">$(AccentLight)</Property>
+        </State>
+        <State Name="Pressed">
+            <Property Name="Background">$(AccentDark)</Property>
+        </State>
+        <State Name="Disabled">
+            <Property Name="Background">#606060</Property>
+            <Property Name="Foreground">#808080</Property>
+        </State>
+    </ControlStyle>
+
+    <ControlStyle Name="SecondaryButton" ControlType="Button">
+        <Property Name="Background">#3B3D41</Property>
+        <Property Name="Foreground">$(TextPrimary)</Property>
+        <Property Name="BorderRadius">$(MediumRadius)</Property>
+        <Property Name="Padding">$(MediumPadding)</Property>
+        <Property Name="Height">44</Property>
+        <State Name="Normal">
+            <Property Name="Background">#3B3D41</Property>
+        </State>
+        <State Name="Hover">
+            <Property Name="Background">#45475A</Property>
+        </State>
+        <State Name="Pressed">
+            <Property Name="Background">#2F3033</Property>
+        </State>
+    </ControlStyle>
+
+    <!-- TextBox styles -->
+    <ControlStyle Name="DefaultTextBox" ControlType="TextBox">
+        <Property Name="Background">$(SecondaryBackground)</Property>
+        <Property Name="Foreground">$(TextPrimary)</Property>
+        <Property Name="BorderBrush">$(Divider)</Property>
+        <Property Name="BorderRadius">$(MediumRadius)</Property>
+        <Property Name="Height">48</Property>
+        <Property Name="Padding">12,0,12,0</Property>
+        <State Name="Normal">
+            <Property Name="BorderBrush">$(Divider)</Property>
+        </State>
+        <State Name="Focused">
+            <Property Name="BorderBrush">$(AccentPrimary)</Property>
+        </State>
+    </ControlStyle>
+
+    <!-- Label styles -->
+    <ControlStyle Name="HeadingLabel" ControlType="Label">
+        <Property Name="FontSize">24</Property>
+        <Property Name="FontWeight">Semibold</Property>
+        <Property Name="Foreground">$(TextPrimary)</Property>
+    </ControlStyle>
+
+    <ControlStyle Name="BodyLabel" ControlType="Label">
+        <Property Name="FontSize">14</Property>
+        <Property Name="FontWeight">Regular</Property>
+        <Property Name="Foreground">$(TextSecondary)</Property>
+    </ControlStyle>
+
+    <ControlStyle Name="CaptionLabel" ControlType="Label">
+        <Property Name="FontSize">12</Property>
+        <Property Name="FontWeight">Regular</Property>
+        <Property Name="Foreground">$(TextTertiary)</Property>
+    </ControlStyle>
+
+    <!-- Panel styles -->
+    <ControlStyle Name="PrimaryPanel" ControlType="Panel">
+        <Property Name="Background">$(PrimaryBackground)</Property>
+        <Property Name="BorderRadius">$(LargeRadius)</Property>
+        <Property Name="HasShadow">True</Property>
+        <Property Name="ShadowDepth">8</Property>
+        <Property Name="UseAcrylicEffect">True</Property>
+        <Property Name="AcrylicOpacity">200</Property>
+    </ControlStyle>
+
+    <!-- Animation definitions -->
+    <Animations>
+        <Animation Name="FadeIn" Duration="300" EasingFunction="EaseOutCubic">
+            <KeyFrame Time="0%" Opacity="0" />
+            <KeyFrame Time="100%" Opacity="1" />
+        </Animation>
+
+        <Animation Name="SlideInDown" Duration="300" EasingFunction="EaseOutCubic">
+            <KeyFrame Time="0%" TranslateY="-20" Opacity="0" />
+            <KeyFrame Time="100%" TranslateY="0" Opacity="1" />
+        </Animation>
+
+        <Animation Name="ScaleIn" Duration="300" EasingFunction="EaseOutCubic">
+            <KeyFrame Time="0%" Scale="0.95" Opacity="0" />
+            <KeyFrame Time="100%" Scale="1" Opacity="1" />
+        </Animation>
+
+        <Animation Name="ButtonHoverScale" Duration="150" EasingFunction="EaseOutQuad">
+            <KeyFrame Time="0%" Scale="1" />
+            <KeyFrame Time="100%" Scale="1.02" />
+        </Animation>
+    </Animations>
+
+</Styles>
